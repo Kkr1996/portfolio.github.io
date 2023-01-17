@@ -1,0 +1,47 @@
+
+#ForceType application/x-httpd-php
+Options +FollowSymlinks
+RewriteEngine on
+<IfModule mod_headers.c>
+<FilesMatch "\.(ttf|ttc|otf|eot|woff|woff2|font.css)$">
+Header set Access-Control-Allow-Origin "*"
+</FilesMatch>
+</IfModule>
+
+
+
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} !^/[0-9]+\..+\.cpaneldcv$
+RewriteCond %{REQUEST_URI} !^/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
+RewriteRule ^(.*)$ ourwork.php?page_id=$1 [L,QSA]
+
+#301 code to URL with out www
+RewriteCond %{http_host} ^tokyoroomfinder\.com [nc]
+RewriteCond %{REQUEST_URI} !^/[0-9]+\..+\.cpaneldcv$
+RewriteCond %{REQUEST_URI} !^/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
+rewriterule ^(.*)$ http://www.tokyoroomfinder.com/$1 [r=301,nc]
+
+
+#ErrorDocument 404 http://www.tokyoroomfinder.com/includes/404.php
+
+#RewriteCond %{REQUEST_FILENAME} !-f
+#RewriteCond %{REQUEST_FILENAME} !-d
+#RewriteRule ^(.*)$ http://www.tokyoroomfinder.com/ [r=301,nc]
+
+#RewriteCond %{HTTP_REFERER} !^$
+#RewriteCond %{HTTP_REFERER} !^http://(www\.)?tokyoroomfinder.com/.*$ [NC]
+#RewriteRule \.(gif|jpg|js|css)$ - [F]
+
+
+
+#RewriteRule ^journal/(.+)?$ http://tombammann.homedns.org/$1 [QSA,L]
+
+Options -Indexes
+
+
+<Files 403.shtml>
+order allow,deny
+allow from all
+</Files>

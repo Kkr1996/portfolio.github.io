@@ -1,0 +1,36 @@
+.__custom-header .navbar-brand
+{
+    color: #fff;
+    font-size: 37px;
+}
+.__custom-header ul li
+{
+    color: #fff;
+/*    display: inline-block;*/
+    float: none;
+    padding: 20px 35px;
+}
+.__custom-header ul li a
+{
+    text-decoration: none;
+    list-style: none;
+    color: #fff;
+    font-size: 20px;
+    position: relative;
+}
+.__custom-header .nav-item a.nav-link:before {
+    content: '';
+    background-image: url(image/next.png);
+    height: 20px;
+    width: 17px;
+    background-size: contain;
+    position: absolute;
+    top: 38%;
+    left: -30px;
+    background-repeat: no-repeat;
+}
+.__custom-header ul li a:hover
+{
+    color: yellow;
+   /* font-weight: bold;*/
+}
